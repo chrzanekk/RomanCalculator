@@ -1,4 +1,4 @@
-public enum RomanNumerals {
+public enum RomanNumeral {
 
     I(1),
     IV(4),
@@ -16,7 +16,7 @@ public enum RomanNumerals {
 
     private int value;
 
-    RomanNumerals(int value) {
+    RomanNumeral(int value) {
         this.value = value;
     }
 
