@@ -6,7 +6,40 @@ public class RomanCalculator {
     }
 
     String addRoman(String firstNumeral, String secondNumeral) {
-        String additionResult = "";
-        return additionResult;
+
+        int firstArabicDigits = digitConverter.romanToArabian(firstNumeral);
+        int secondArabicDigits = digitConverter.romanToArabian(secondNumeral);
+
+        int arabicResult = arabicAddition(firstArabicDigits, secondArabicDigits);
+
+        return getResult(arabicResult);
     }
+
+    String subRoman(String firstNumeral, String secondNumeral) {
+
+        int firstArabDigit = digitConverter.romanToArabian(firstNumeral);
+        int secondArabDigit = digitConverter.romanToArabian(secondNumeral);
+
+        int arabResult = arabicSubtraction(firstArabDigit, secondArabDigit);
+        return getResult(arabResult);
+    }
+
+    private String getResult(int arabResult) {
+        if (arabResult < 0 || arabResult > 4000) {
+            return "Result out of range.";
+        } else {
+            return digitConverter.arabicToRoman(arabResult);
+        }
+    }
+
+
+    private int arabicAddition(int firstNumber, int secondNumber) {
+        return firstNumber + secondNumber;
+    }
+
+    private int arabicSubtraction(int firstNumber, int secondNumber) {
+        return firstNumber - secondNumber;
+    }
+
+
 }

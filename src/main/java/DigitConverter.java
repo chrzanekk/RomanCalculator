@@ -28,14 +28,11 @@ public class DigitConverter {
         return result;
     }
 
-    public String arabianToRoman(int arabicNumber) {
+    public String arabicToRoman(int arabicNumber) {
         String romanNumeralOutput = "";
-        try {
-            if ((arabicNumber <= 0) || (arabicNumber > 4000)) {
-                throw new IllegalArgumentException();
-            }
-        } catch (IllegalArgumentException e) {
-            System.out.println("Number is out of range (0,4000]");
+
+        if ((arabicNumber <= 0) || (arabicNumber > 4000)) {
+            return "Number is out of range (0,4000]";
         }
 
         List<RomanNumeral> romanNumerals = getReversedArabicValues();
@@ -55,14 +52,14 @@ public class DigitConverter {
 
 
     private List<RomanNumeral> getReversedArabicValues() {
-        List<RomanNumeral> arabicNumerals = new ArrayList<>();
-        for (RomanNumeral arabicNumeral : RomanNumeral.values()) {
-            arabicNumerals.add(arabicNumeral);
+        List<RomanNumeral> arabicValues = new ArrayList<>();
+        for (RomanNumeral arabicValue : RomanNumeral.values()) {
+            arabicValues.add(arabicValue);
         }
         Comparator<RomanNumeral> romanNumeralsComparator = Comparator.comparing(RomanNumeral::getValue).reversed();
-        Collections.sort(arabicNumerals, romanNumeralsComparator);
-        arabicNumerals.stream().sorted(romanNumeralsComparator);
-        return arabicNumerals;
+        Collections.sort(arabicValues, romanNumeralsComparator);
+        arabicValues.stream().sorted(romanNumeralsComparator);
+        return arabicValues;
     }
 
 //    https://www.baeldung.com/java-convert-roman-arabic

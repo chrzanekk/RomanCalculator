@@ -34,7 +34,7 @@ public class DigitConverterTest {
     public void testArabicToRomanConverterCorrectInput() {
         int arabicNumber = 2018;
 
-        String result = digitConverter.arabianToRoman(arabicNumber);
+        String result = digitConverter.arabicToRoman(arabicNumber);
 
         assertEquals("MMXVIII", result);
 
@@ -44,7 +44,7 @@ public class DigitConverterTest {
     public void testArabicToRomanConverterIncorrectInput() {
         int arabicNumber = 4018;
 
-        String result = digitConverter.arabianToRoman(arabicNumber);
+        String result = digitConverter.arabicToRoman(arabicNumber);
 
         assertEquals("Number is out of range (0,4000]", result);
 
