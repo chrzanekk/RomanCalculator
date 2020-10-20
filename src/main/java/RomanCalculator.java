@@ -24,6 +24,18 @@ public class RomanCalculator {
         return getResult(arabResult);
     }
 
+    String divRoman(String romanDivided, String romanDivider){
+        int result = 0;
+        int divided = digitConverter.romanToArabic(romanDivided);
+        int divider = digitConverter.romanToArabic(romanDivider);
+        if (divider != 0) {
+             result = divided/divider;
+        }
+
+        return digitConverter.arabicToRoman(result);
+
+    }
+
     private String getResult(int arabResult) {
         if (arabResult < 0 || arabResult > 4000) {
             return "Result out of range.";

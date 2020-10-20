@@ -52,4 +52,14 @@ public class DigitConverterTest {
 
     }
 
+    @Test
+    public void testArabicToRomanConverterZeroInput() {
+        int arabicNumber = 0;
+
+        String result = digitConverter.arabicToRoman(arabicNumber);
+
+        assertEquals("Number is out of range (0,4000]", result);
+
+    }
+
 }
