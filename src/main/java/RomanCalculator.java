@@ -24,22 +24,44 @@ public class RomanCalculator {
         return getResult(arabResult);
     }
 
-    String divRoman(String romanDivided, String romanDivider){
-        int result = 0;
+    String divRoman(String romanDivided, String romanDivider) {
+        int divisionResult = 0;
+        int moduloResult = 0;
+        String romanDivisionResult = "";
+        String romanModuloResult = "";
+
         int divided = digitConverter.romanToArabic(romanDivided);
         int divider = digitConverter.romanToArabic(romanDivider);
+
         if (divider != 0) {
-             result = divided/divider;
+            moduloResult = Math.floorMod(divided,divider);
+            divisionResult = Math.floorDiv(divided, divider);
+            if (divisionResult != 0) {
+                romanDivisionResult = digitConverter.arabicToRoman(divisionResult);
+            } else {
+                romanDivisionResult = "none";
+            }
+
+            if (moduloResult != 0) {
+                romanModuloResult = digitConverter.arabicToRoman(moduloResult);
+            } else {
+                romanModuloResult = "none";
+            }
+
+        } else {
+            romanDivisionResult = "none";
+            romanModuloResult = "none";
         }
 
-        return digitConverter.arabicToRoman(result);
+
+        return "Division result: " + romanDivisionResult + ". Modulo: " + romanModuloResult;
 
     }
 
     private String getResult(int arabResult) {
         if (arabResult < 0 || arabResult > 4000) {
             return "Result out of range.";
-        } else if (arabResult==0){
+        } else if (arabResult == 0) {
             return "None.";
         }
         return digitConverter.arabicToRoman(arabResult);

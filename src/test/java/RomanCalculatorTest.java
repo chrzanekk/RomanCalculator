@@ -62,4 +62,34 @@ public class RomanCalculatorTest {
 
         assertEquals("None.",result);
     }
+
+    @Test
+    public void testRomanDivWithModuloTwoNumeralsFirstAndSecondHasCorrectRange() {
+        String firstNumeral = "III";
+        String secondNumeral = "II";
+
+        String result = romanCalculator.divRoman(firstNumeral,secondNumeral);
+
+        assertEquals("Division result: I. Modulo: I",result);
+    }
+
+    @Test
+    public void testRomanDivWithoutModuloTwoNumeralsFirstAndSecondHasCorrectRange() {
+        String firstNumeral = "IIII";
+        String secondNumeral = "II";
+
+        String result = romanCalculator.divRoman(firstNumeral,secondNumeral);
+
+        assertEquals("Division result: II. Modulo: none",result);
+    }
+
+    @Test
+    public void testRomanDivWithModuloTwoNumeralsFirstAndSecondHasCorrectRangeAndFirstIsLowerThanSecond() {
+        String firstNumeral = "II";
+        String secondNumeral = "IIII";
+
+        String result = romanCalculator.divRoman(firstNumeral,secondNumeral);
+
+        assertEquals("Division result: none. Modulo: II",result);
+    }
 }
