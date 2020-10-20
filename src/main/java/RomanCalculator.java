@@ -7,8 +7,8 @@ public class RomanCalculator {
 
     String addRoman(String firstNumeral, String secondNumeral) {
 
-        int firstArabicDigits = digitConverter.romanToArabian(firstNumeral);
-        int secondArabicDigits = digitConverter.romanToArabian(secondNumeral);
+        int firstArabicDigits = digitConverter.romanToArabic(firstNumeral);
+        int secondArabicDigits = digitConverter.romanToArabic(secondNumeral);
 
         int arabicResult = arabicAddition(firstArabicDigits, secondArabicDigits);
 
@@ -17,8 +17,8 @@ public class RomanCalculator {
 
     String subRoman(String firstNumeral, String secondNumeral) {
 
-        int firstArabDigit = digitConverter.romanToArabian(firstNumeral);
-        int secondArabDigit = digitConverter.romanToArabian(secondNumeral);
+        int firstArabDigit = digitConverter.romanToArabic(firstNumeral);
+        int secondArabDigit = digitConverter.romanToArabic(secondNumeral);
 
         int arabResult = arabicSubtraction(firstArabDigit, secondArabDigit);
         return getResult(arabResult);
@@ -27,9 +27,10 @@ public class RomanCalculator {
     private String getResult(int arabResult) {
         if (arabResult < 0 || arabResult > 4000) {
             return "Result out of range.";
-        } else {
-            return digitConverter.arabicToRoman(arabResult);
+        } else if (arabResult==0){
+            return "None.";
         }
+        return digitConverter.arabicToRoman(arabResult);
     }
 
 

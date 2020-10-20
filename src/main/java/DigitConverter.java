@@ -2,7 +2,7 @@ import java.util.*;
 
 public class DigitConverter {
 
-    public Integer romanToArabian(String romanInput) {
+    public Integer romanToArabic(String romanInput) {
         String romanNumeral = romanInput.toUpperCase();
         List<RomanNumeral> romanNumerals = getReversedArabicValues();
         Integer result = 0;
