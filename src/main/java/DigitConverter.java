@@ -64,4 +64,5 @@ public class DigitConverter {
 
 //    https://www.baeldung.com/java-convert-roman-arabic
 //https://stackoverflow.com/questions/33005654/converting-roman-numerals-to-arabic
+//    https://www.calculatorsoup.com/calculators/conversions/roman-numeral-calculator.php
 }
