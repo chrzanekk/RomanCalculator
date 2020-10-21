@@ -5,7 +5,10 @@ public class RomanCalculator {
         this.digitConverter = digitConverter;
     }
 
-    String addRoman(String firstNumeral, String secondNumeral) {
+    private static final int LOWER_BOUND = 0;
+    private static final int UPPER_BOUND = 4000;
+
+    String romanAdd(String firstNumeral, String secondNumeral) {
 
         int firstArabicDigits = digitConverter.romanToArabic(firstNumeral);
         int secondArabicDigits = digitConverter.romanToArabic(secondNumeral);
@@ -15,7 +18,7 @@ public class RomanCalculator {
         return getResult(arabicResult);
     }
 
-    String subRoman(String firstNumeral, String secondNumeral) {
+    String romanSubtraction(String firstNumeral, String secondNumeral) {
 
         int firstArabDigit = digitConverter.romanToArabic(firstNumeral);
         int secondArabDigit = digitConverter.romanToArabic(secondNumeral);
@@ -24,7 +27,7 @@ public class RomanCalculator {
         return getResult(arabResult);
     }
 
-    String divRoman(String romanDivided, String romanDivider) {
+    String romanDivision(String romanDivided, String romanDivider) {
         int divisionResult = 0;
         int moduloResult = 0;
         String romanDivisionResult = "";
@@ -34,7 +37,7 @@ public class RomanCalculator {
         int divider = digitConverter.romanToArabic(romanDivider);
 
         if (divider != 0) {
-            moduloResult = Math.floorMod(divided,divider);
+            moduloResult = Math.floorMod(divided, divider);
             divisionResult = Math.floorDiv(divided, divider);
             if (divisionResult != 0) {
                 romanDivisionResult = digitConverter.arabicToRoman(divisionResult);
@@ -52,14 +55,18 @@ public class RomanCalculator {
             romanDivisionResult = "none";
             romanModuloResult = "none";
         }
-
-
         return "Division result: " + romanDivisionResult + ". Modulo: " + romanModuloResult;
+    }
+
+    String romanMultiply(String firstNumeral, String secondNumeral) {
+        int firstNumber = digitConverter.romanToArabic(firstNumeral);
+        int secondNumber = digitConverter.romanToArabic(secondNumeral);
+        return getResult(arabicMultiply(firstNumber, secondNumber));
 
     }
 
     private String getResult(int arabResult) {
-        if (arabResult < 0 || arabResult > 4000) {
+        if (arabResult < LOWER_BOUND || arabResult > UPPER_BOUND) {
             return "Result out of range.";
         } else if (arabResult == 0) {
             return "None.";
@@ -74,6 +81,10 @@ public class RomanCalculator {
 
     private int arabicSubtraction(int firstNumber, int secondNumber) {
         return firstNumber - secondNumber;
+    }
+
+    private int arabicMultiply(int firstNumber, int secondNumber) {
+        return firstNumber * secondNumber;
     }
 
 
