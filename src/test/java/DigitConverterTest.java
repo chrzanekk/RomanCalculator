@@ -11,7 +11,12 @@ public class DigitConverterTest {
     public static void initDigitConverterFromArabicToNumeralAndOpposite() {
         digitConverter = new DigitConverter();
     }
-
+//dodatkowy scenariusz - duze literały rzymskie.
+//    dodatkowy scenariusz - pusty string
+//    dodatkowy scenariusz - cyfra w stringu.
+//    dodatkowy scenariusz - string w cyfrze.
+//    dodatkowy scnariusz - null
+//    dodatkowy scenariusz - ujemny integer.
     @Test
     public void testRomanStringToArabicIntegerConvertCorrectInput() {
         String romanNumeral = "mmxviii";
@@ -22,14 +27,11 @@ public class DigitConverterTest {
 
     }
 
-    @Test
+    @Test(expected =  IllegalArgumentException.class)
     public void testRomanStringToArabicIntegerConvertIncorrectInput() {
         String romanNumeral = "rmxviii";
 
-        int result = digitConverter.romanToArabic(romanNumeral);
-
-        assertEquals(0, result);
-
+        digitConverter.romanToArabic(romanNumeral);
     }
 
     @Test

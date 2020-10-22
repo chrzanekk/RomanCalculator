@@ -18,7 +18,7 @@ public class DigitConverter {
         int result = 0;
         int index = 0;
 
-        while ((romanNumeral.length() > 0) && (index < romanNumerals.size())) {
+        while (romanNumeral.length() > 0 && index < romanNumerals.size()) {
             RomanNumeral romanSymbol = romanNumerals.get(index);
             if (romanNumeral.startsWith(romanSymbol.name())) {
                 result += romanSymbol.getValue();
@@ -27,13 +27,11 @@ public class DigitConverter {
                 index++;
             }
         }
-        try {
-            if (romanNumeral.length() > 0) {
-                throw new IllegalArgumentException(romanInput);
-            }
-        } catch (IllegalArgumentException e) {
-            System.out.println("Unable to convert " + romanInput + " to Arabic Number.");
+
+        if (romanNumeral.length() > 0) {
+            throw new IllegalArgumentException("Unable to convert. " + romanInput + "is invalid.");
         }
+
         return result;
     }
 
@@ -51,7 +49,7 @@ public class DigitConverter {
         String romanNumeralOutput = "";
 
         if ((arabicNumber <= 0) || (arabicNumber > 4000)) {
-            return "Number is out of range (0,4000]";
+            throw new IllegalArgumentException("Unable to convert. " + arabicNumber + " is out of range [0,4000)");
         }
 
         List<RomanNumeral> romanNumerals = getReversedArabicValues();

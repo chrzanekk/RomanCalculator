@@ -28,33 +28,32 @@ public class RomanCalculator {
     }
 
     String romanDivision(String romanDivided, String romanDivider) {
-        int divisionResult = 0;
-        int moduloResult = 0;
-        String romanDivisionResult = "";
-        String romanModuloResult = "";
-
         int divided = digitConverter.romanToArabic(romanDivided);
         int divider = digitConverter.romanToArabic(romanDivider);
 
+        String romanDivisionResult = "";
+        String romanModuloResult = "";
         if (divider != 0) {
-            moduloResult = Math.floorMod(divided, divider);
-            divisionResult = Math.floorDiv(divided, divider);
+            int moduloResult = Math.floorMod(divided, divider);
+            int divisionResult = Math.floorDiv(divided, divider);
+
             if (divisionResult != 0) {
                 romanDivisionResult = digitConverter.arabicToRoman(divisionResult);
             } else {
-                romanDivisionResult = "none";
+                romanDivisionResult = null;
             }
 
             if (moduloResult != 0) {
                 romanModuloResult = digitConverter.arabicToRoman(moduloResult);
             } else {
-                romanModuloResult = "none";
+                romanModuloResult = null;
             }
 
         } else {
-            romanDivisionResult = "none";
-            romanModuloResult = "none";
+            romanDivisionResult = null;
+            romanModuloResult = null;
         }
+//         do poprawy -> divisionResult obiekt.
         return "Division result: " + romanDivisionResult + ". Modulo: " + romanModuloResult;
     }
 
@@ -62,9 +61,9 @@ public class RomanCalculator {
         int firstNumber = digitConverter.romanToArabic(firstNumeral);
         int secondNumber = digitConverter.romanToArabic(secondNumeral);
         return getResult(arabicMultiply(firstNumber, secondNumber));
-
     }
 
+//    wyjatek w ifie.
     private String getResult(int arabResult) {
         if (arabResult < LOWER_BOUND || arabResult > UPPER_BOUND) {
             return "Result out of range.";

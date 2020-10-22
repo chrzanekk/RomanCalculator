@@ -11,8 +11,7 @@ public class RomanCalculatorTest {
         digitConverter = new DigitConverter();
         romanCalculator = new RomanCalculator(digitConverter);
     }
-
-
+//dodatkowy test - male literały rzymskie
 
 
     @Test
@@ -20,9 +19,9 @@ public class RomanCalculatorTest {
         String firstNumeral = "DCCXXVI";
         String secondNumeral = "XLVIII";
 
-        String result = romanCalculator.romanAdd(firstNumeral,secondNumeral);
+        String result = romanCalculator.romanAdd(firstNumeral, secondNumeral);
 
-        assertEquals("DCCLXXIV",result);
+        assertEquals("DCCLXXIV", result);
     }
 
     @Test
@@ -30,11 +29,10 @@ public class RomanCalculatorTest {
         String firstNumeral = "MMMD";
         String secondNumeral = "DC";
 
-        String result = romanCalculator.romanAdd(firstNumeral,secondNumeral);
+        String result = romanCalculator.romanAdd(firstNumeral, secondNumeral);
 
-        assertEquals("Result out of range.",result);
+        assertEquals("Result out of range.", result);
     }
-
 
 
     @Test
@@ -42,9 +40,9 @@ public class RomanCalculatorTest {
         String firstNumeral = "MMMD";
         String secondNumeral = "DC";
 
-        String result = romanCalculator.romanSubtraction(firstNumeral,secondNumeral);
+        String result = romanCalculator.romanSubtraction(firstNumeral, secondNumeral);
 
-        assertEquals("MMCM",result);
+        assertEquals("MMCM", result);
     }
 
     @Test
@@ -52,9 +50,9 @@ public class RomanCalculatorTest {
         String firstNumeral = "DC";
         String secondNumeral = "MMMDC";
 
-        String result = romanCalculator.romanSubtraction(firstNumeral,secondNumeral);
+        String result = romanCalculator.romanSubtraction(firstNumeral, secondNumeral);
 
-        assertEquals("Result out of range.",result);
+        assertEquals("Result out of range.", result);
     }
 
     @Test
@@ -62,11 +60,10 @@ public class RomanCalculatorTest {
         String firstNumeral = "I";
         String secondNumeral = "I";
 
-        String result = romanCalculator.romanSubtraction(firstNumeral,secondNumeral);
+        String result = romanCalculator.romanSubtraction(firstNumeral, secondNumeral);
 
-        assertEquals("None.",result);
+        assertEquals("None.", result);
     }
-
 
 
     @Test
@@ -74,9 +71,9 @@ public class RomanCalculatorTest {
         String firstNumeral = "III";
         String secondNumeral = "II";
 
-        String result = romanCalculator.romanDivision(firstNumeral,secondNumeral);
+        String result = romanCalculator.romanDivision(firstNumeral, secondNumeral);
 
-        assertEquals("Division result: I. Modulo: I",result);
+        assertEquals("Division result: I. Modulo: I", result);
     }
 
     @Test
@@ -84,9 +81,9 @@ public class RomanCalculatorTest {
         String firstNumeral = "IIII";
         String secondNumeral = "II";
 
-        String result = romanCalculator.romanDivision(firstNumeral,secondNumeral);
+        String result = romanCalculator.romanDivision(firstNumeral, secondNumeral);
 
-        assertEquals("Division result: II. Modulo: none",result);
+        assertEquals("Division result: II. Modulo: none", result);
     }
 
     @Test
@@ -94,27 +91,30 @@ public class RomanCalculatorTest {
         String firstNumeral = "II";
         String secondNumeral = "IIII";
 
-        String result = romanCalculator.romanDivision(firstNumeral,secondNumeral);
+        String result = romanCalculator.romanDivision(firstNumeral, secondNumeral);
 
-        assertEquals("Division result: none. Modulo: II",result);
+        assertEquals("Division result: none. Modulo: II", result);
 
-    }@Test
+    }
+
+    @Test
     public void testRomanMultiplyTwoNumeralsFirstAndSecondHasCorrectRange() {
         String firstNumeral = "II";
         String secondNumeral = "IIII";
 
-        String result = romanCalculator.romanMultiply(firstNumeral,secondNumeral);
+        String result = romanCalculator.romanMultiply(firstNumeral, secondNumeral);
 
-        assertEquals("VIII",result);
+        assertEquals("VIII", result);
     }
+
     @Test
     public void testRomanMultiplyTwoNumeralsResultIsOutOfRange() {
         String firstNumeral = "DCCXXVI";
         String secondNumeral = "XLVIII";
 
-        String result = romanCalculator.romanMultiply(firstNumeral,secondNumeral);
+        String result = romanCalculator.romanMultiply(firstNumeral, secondNumeral);
 
-        assertEquals("Result out of range.",result);
+        assertEquals("Result out of range.", result);
     }
 }
 //https://www.calculatorsoup.com/calculators/conversions/roman-numeral-calculator.php
