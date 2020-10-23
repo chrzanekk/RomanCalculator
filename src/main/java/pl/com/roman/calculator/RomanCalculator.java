@@ -1,3 +1,5 @@
+package pl.com.roman.calculator;
+
 public class RomanCalculator {
     DigitConverter digitConverter;
 
@@ -27,34 +29,10 @@ public class RomanCalculator {
         return getResult(arabResult);
     }
 
-    String romanDivision(String romanDivided, String romanDivider) {
+    RomanDivisionResult romanDivision(String romanDivided, String romanDivider) {
         int divided = digitConverter.romanToArabic(romanDivided);
         int divider = digitConverter.romanToArabic(romanDivider);
-
-        String romanDivisionResult = "";
-        String romanModuloResult = "";
-        if (divider != 0) {
-            int moduloResult = Math.floorMod(divided, divider);
-            int divisionResult = Math.floorDiv(divided, divider);
-
-            if (divisionResult != 0) {
-                romanDivisionResult = digitConverter.arabicToRoman(divisionResult);
-            } else {
-                romanDivisionResult = null;
-            }
-
-            if (moduloResult != 0) {
-                romanModuloResult = digitConverter.arabicToRoman(moduloResult);
-            } else {
-                romanModuloResult = null;
-            }
-
-        } else {
-            romanDivisionResult = null;
-            romanModuloResult = null;
-        }
-//         do poprawy -> divisionResult obiekt.
-        return "Division result: " + romanDivisionResult + ". Modulo: " + romanModuloResult;
+        return new RomanDivisionResult(divided,divider);
     }
 
     String romanMultiply(String firstNumeral, String secondNumeral) {

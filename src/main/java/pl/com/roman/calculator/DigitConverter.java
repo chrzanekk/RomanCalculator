@@ -1,3 +1,5 @@
+package pl.com.roman.calculator;
+
 import java.util.*;
 
 public class DigitConverter {

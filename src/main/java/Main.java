@@ -1,7 +1,5 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import pl.com.roman.calculator.DigitConverter;
+import pl.com.roman.calculator.RomanCalculator;
 
 public class Main {
 
@@ -9,6 +7,9 @@ public class Main {
         DigitConverter digitConverter = new DigitConverter();
         RomanCalculator romanCalculator = new RomanCalculator(digitConverter);
 
-
+        int divider = 2;
+        int divisor = 4;
+        System.out.println(Math.floorDiv(divider,divisor));
+        System.out.println(Math.floorMod(divider,divisor));
     }
 }

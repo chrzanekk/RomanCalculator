@@ -1,5 +1,8 @@
+package pl.com.roman.calculator;
+
 import org.junit.BeforeClass;
 import org.junit.Test;
+import pl.com.roman.calculator.DigitConverter;
 
 import static org.junit.Assert.assertEquals;
 

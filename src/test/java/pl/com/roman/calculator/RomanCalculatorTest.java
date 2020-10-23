@@ -1,4 +1,8 @@
+package pl.com.roman.calculator;
+
 import org.junit.*;
+import pl.com.roman.calculator.DigitConverter;
+import pl.com.roman.calculator.RomanCalculator;
 
 import static org.junit.Assert.*;
 
@@ -71,9 +75,12 @@ public class RomanCalculatorTest {
         String firstNumeral = "III";
         String secondNumeral = "II";
 
-        String result = romanCalculator.romanDivision(firstNumeral, secondNumeral);
+        String moduloResult = romanCalculator.romanDivision(firstNumeral, secondNumeral).getRomanModuloResult();
+        String divisionResult = romanCalculator.romanDivision(firstNumeral, secondNumeral).getRomanDivisionResult();
 
-        assertEquals("Division result: I. Modulo: I", result);
+        assertEquals(null, moduloResult);
+        assertEquals("I", divisionResult);
+//        assertEquals("Division result: I. Modulo: I", result);
     }
 
     @Test
@@ -81,9 +88,11 @@ public class RomanCalculatorTest {
         String firstNumeral = "IIII";
         String secondNumeral = "II";
 
-        String result = romanCalculator.romanDivision(firstNumeral, secondNumeral);
+        String moduloResult = romanCalculator.romanDivision(firstNumeral, secondNumeral).getRomanModuloResult();
+        String divisionResult = romanCalculator.romanDivision(firstNumeral, secondNumeral).getRomanDivisionResult();
 
-        assertEquals("Division result: II. Modulo: none", result);
+        assertEquals(null, moduloResult);
+        assertEquals("II", divisionResult);
     }
 
     @Test
@@ -91,9 +100,11 @@ public class RomanCalculatorTest {
         String firstNumeral = "II";
         String secondNumeral = "IIII";
 
-        String result = romanCalculator.romanDivision(firstNumeral, secondNumeral);
+        String moduloResult = romanCalculator.romanDivision(firstNumeral, secondNumeral).getRomanModuloResult();
+        String divisionResult = romanCalculator.romanDivision(firstNumeral, secondNumeral).getRomanDivisionResult();
 
-        assertEquals("Division result: none. Modulo: II", result);
+        assertEquals("II", moduloResult);
+        assertEquals(null, divisionResult);
 
     }
 

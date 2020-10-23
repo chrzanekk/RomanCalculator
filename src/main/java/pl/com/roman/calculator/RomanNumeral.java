@@ -1,3 +1,5 @@
+package pl.com.roman.calculator;
+
 public enum RomanNumeral {
 
     I(1),
