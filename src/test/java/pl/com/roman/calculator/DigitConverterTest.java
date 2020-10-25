@@ -14,14 +14,15 @@ public class DigitConverterTest {
     public static void initDigitConverterFromArabicToNumeralAndOpposite() {
         digitConverter = new DigitConverter();
     }
-//dodatkowy scenariusz - duze literały rzymskie.
-//    dodatkowy scenariusz - pusty string
-//    dodatkowy scenariusz - cyfra w stringu.
-//    dodatkowy scenariusz - string w cyfrze.
-//    dodatkowy scnariusz - null
-//    dodatkowy scenariusz - ujemny integer.
+
+    //dodatkowy scenariusz - duze literaly rzymskie - done
+    //    dodatkowy scenariusz - pusty string - done
+    //    dodatkowy scenariusz - cyfra w stringu - done
+    //    dodatkowy scenariusz - string w cyfrze - do omówienia.
+    //    dodatkowy scnariusz - null - done
+    //    dodatkowy scenariusz - ujemny integer - done
     @Test
-    public void testRomanStringToArabicIntegerConvertCorrectInput() {
+    public void testRomanStringToArabicIntegerConvertCorrectInputLowerCase() {
         String romanNumeral = "mmxviii";
 
         int result = digitConverter.romanToArabic(romanNumeral);
@@ -30,7 +31,42 @@ public class DigitConverterTest {
 
     }
 
-    @Test(expected =  IllegalArgumentException.class)
+    @Test
+    public void testRomanStringToArabicIntegerConvertCorrectInputUppercase() {
+        String romanNumeral = "MMMDCCXXIV";
+
+        int result = digitConverter.romanToArabic(romanNumeral);
+
+        assertEquals(3724, result);
+
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testRomanStringToArabicIntegerConvertEmptyString() {
+        String romanNumeral = "";
+
+        digitConverter.romanToArabic(romanNumeral);
+
+    }
+
+
+    @Test(expected = NullPointerException.class)
+    public void testRomanStringToArabicIntegerConvertStringIsNull() {
+        String romanNumeral = null;
+
+        digitConverter.romanToArabic(romanNumeral);
+
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testRomanStringToArabicIntegerConvertDigitInString() {
+        String romanNumeral = "6";
+
+        digitConverter.romanToArabic(romanNumeral);
+    }
+
+
+    @Test(expected = IllegalArgumentException.class)
     public void testRomanStringToArabicIntegerConvertIncorrectInput() {
         String romanNumeral = "rmxviii";
 
@@ -44,27 +80,39 @@ public class DigitConverterTest {
         String result = digitConverter.arabicToRoman(arabicNumber);
 
         assertEquals("MMXVIII", result);
-
     }
 
-    @Test
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testArabicToRomanConverterInCorrectInputNegativeInteger() {
+        int arabicNumber = -2018;
+
+       digitConverter.arabicToRoman(arabicNumber);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
     public void testArabicToRomanConverterIncorrectInput() {
         int arabicNumber = 4018;
 
-        String result = digitConverter.arabicToRoman(arabicNumber);
-
-        assertEquals("Number is out of range (0,4000]", result);
-
+        digitConverter.arabicToRoman(arabicNumber);
     }
 
-    @Test
+    @Test(expected = IllegalArgumentException.class)
     public void testArabicToRomanConverterZeroInput() {
         int arabicNumber = 0;
 
-        String result = digitConverter.arabicToRoman(arabicNumber);
-
-        assertEquals("Number is out of range (0,4000]", result);
-
+        digitConverter.arabicToRoman(arabicNumber);
     }
+//ten scenariusz jest albo uzyteczny przy testach metody walidachji danych albo nie wiem jak go skonstruować
+//    @Test
+//    public void testArabicToRomanConverterIncorrectInputStringInInteger() {
+//        int arabicNumber = "2018";
+//
+//        String result = digitConverter.arabicToRoman(arabicNumber);
+//
+//        assertEquals("MMXVIII", result);
+//    }
+
+
 
 }

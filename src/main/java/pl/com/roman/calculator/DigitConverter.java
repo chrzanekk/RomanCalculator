@@ -14,8 +14,16 @@ public class DigitConverter {
 //    set symbol to the next symbol
 
     public Integer romanToArabic(String romanInput) {
+        if (romanInput == null) {
+            throw new NullPointerException("Unable to convert. String cant be null.");
+        }
+
         String romanNumeral = romanInput.toUpperCase();
-        List<RomanNumeral> romanNumerals = getReversedArabicValues();
+        List<RomanNumeral> romanNumerals = RomanNumeral.getReversedArabicValues();
+
+        if (romanNumeral.length() == 0) {
+            throw new IllegalArgumentException("Unable to convert. Empty string is invalid.");
+        }
 
         int result = 0;
         int index = 0;
@@ -54,7 +62,7 @@ public class DigitConverter {
             throw new IllegalArgumentException("Unable to convert. " + arabicNumber + " is out of range [0,4000)");
         }
 
-        List<RomanNumeral> romanNumerals = getReversedArabicValues();
+        List<RomanNumeral> romanNumerals = RomanNumeral.getReversedArabicValues();
         int index = 0;
 
         while ((arabicNumber > 0) && (index < romanNumerals.size())) {
@@ -70,16 +78,7 @@ public class DigitConverter {
     }
 
 
-    private List<RomanNumeral> getReversedArabicValues() {
-        List<RomanNumeral> arabicValues = new ArrayList<>();
-        for (RomanNumeral arabicValue : RomanNumeral.values()) {
-            arabicValues.add(arabicValue);
-        }
-        Comparator<RomanNumeral> romanNumeralsComparator = Comparator.comparing(RomanNumeral::getValue).reversed();
-        Collections.sort(arabicValues, romanNumeralsComparator);
-        arabicValues.stream().sorted(romanNumeralsComparator);
-        return arabicValues;
-    }
+
 
 //    https://www.baeldung.com/java-convert-roman-arabic
 //https://stackoverflow.com/questions/33005654/converting-roman-numerals-to-arabic

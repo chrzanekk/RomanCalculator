@@ -41,12 +41,13 @@ public class RomanCalculator {
         return getResult(arabicMultiply(firstNumber, secondNumber));
     }
 
-//    wyjatek w ifie.
+
     private String getResult(int arabResult) {
         if (arabResult < LOWER_BOUND || arabResult > UPPER_BOUND) {
-            return "Result out of range.";
+            throw new IllegalArgumentException("Unable to get result. Result out of range [0,4000).");
         } else if (arabResult == 0) {
-            return "None.";
+            throw new IllegalArgumentException("Unable to get result. Result is 0 and cant be converted to Roman." +
+                    "Numeral");
         }
         return digitConverter.arabicToRoman(arabResult);
     }

@@ -1,5 +1,10 @@
 package pl.com.roman.calculator;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
 public enum RomanNumeral {
 
     I(1),
@@ -24,6 +29,17 @@ public enum RomanNumeral {
 
     public int getValue() {
         return value;
+    }
+
+    public static List<RomanNumeral> getReversedArabicValues() {
+        List<RomanNumeral> arabicValues = new ArrayList<>();
+        for (RomanNumeral arabicValue : RomanNumeral.values()) {
+            arabicValues.add(arabicValue);
+        }
+        Comparator<RomanNumeral> romanNumeralsComparator = Comparator.comparing(RomanNumeral::getValue).reversed();
+        Collections.sort(arabicValues, romanNumeralsComparator);
+        arabicValues.stream().sorted(romanNumeralsComparator);
+        return arabicValues;
     }
 
 }
