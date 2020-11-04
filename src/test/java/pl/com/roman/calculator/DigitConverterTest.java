@@ -15,12 +15,22 @@ public class DigitConverterTest {
         digitConverter = new DigitConverter();
     }
 
-    //dodatkowy scenariusz - duze literaly rzymskie - done
-    //    dodatkowy scenariusz - pusty string - done
-    //    dodatkowy scenariusz - cyfra w stringu - done
-    //    dodatkowy scenariusz - string w cyfrze - do omówienia.
-    //    dodatkowy scnariusz - null - done
-    //    dodatkowy scenariusz - ujemny integer - done
+    @Test
+    public void testBasicRomanNumerals() {
+        for (RomanNumeral romanNumeral : RomanNumeral.values()) {
+            int result = digitConverter.romanToArabic(romanNumeral.name());
+            assertEquals(romanNumeral.getValue(), result);
+        }
+    }
+
+    @Test
+    public void testBasicArabicNumbers() {
+        for (RomanNumeral romanNumeral : RomanNumeral.values()) {
+            String result = digitConverter.arabicToRoman(romanNumeral.getValue());
+            assertEquals(romanNumeral.name(), result);
+        }
+    }
+
     @Test
     public void testRomanStringToArabicIntegerConvertCorrectInputLowerCase() {
         String romanNumeral = "mmxviii";
@@ -49,8 +59,7 @@ public class DigitConverterTest {
 
     }
 
-
-    @Test(expected = NullPointerException.class)
+    @Test(expected = IllegalArgumentException.class)
     public void testRomanStringToArabicIntegerConvertStringIsNull() {
         String romanNumeral = null;
 
@@ -65,6 +74,12 @@ public class DigitConverterTest {
         digitConverter.romanToArabic(romanNumeral);
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void testRomanStringToArabicIntegerConvertDigitAndLettersInString() {
+        String romanNumeral = "6ab";
+
+        digitConverter.romanToArabic(romanNumeral);
+    }
 
     @Test(expected = IllegalArgumentException.class)
     public void testRomanStringToArabicIntegerConvertIncorrectInput() {
@@ -82,12 +97,11 @@ public class DigitConverterTest {
         assertEquals("MMXVIII", result);
     }
 
-
     @Test(expected = IllegalArgumentException.class)
     public void testArabicToRomanConverterInCorrectInputNegativeInteger() {
         int arabicNumber = -2018;
 
-       digitConverter.arabicToRoman(arabicNumber);
+        digitConverter.arabicToRoman(arabicNumber);
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -103,16 +117,5 @@ public class DigitConverterTest {
 
         digitConverter.arabicToRoman(arabicNumber);
     }
-//ten scenariusz jest albo uzyteczny przy testach metody walidachji danych albo nie wiem jak go skonstruować
-//    @Test
-//    public void testArabicToRomanConverterIncorrectInputStringInInteger() {
-//        int arabicNumber = "2018";
-//
-//        String result = digitConverter.arabicToRoman(arabicNumber);
-//
-//        assertEquals("MMXVIII", result);
-//    }
-
-
 
 }

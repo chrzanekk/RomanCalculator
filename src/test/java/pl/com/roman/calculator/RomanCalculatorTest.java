@@ -1,8 +1,6 @@
 package pl.com.roman.calculator;
 
 import org.junit.*;
-import pl.com.roman.calculator.DigitConverter;
-import pl.com.roman.calculator.RomanCalculator;
 
 import static org.junit.Assert.*;
 
@@ -79,8 +77,8 @@ public class RomanCalculatorTest {
         String firstNumeral = "III";
         String secondNumeral = "II";
 
-        String moduloResult = romanCalculator.romanDivision(firstNumeral, secondNumeral).getRomanModuloResult();
-        String divisionResult = romanCalculator.romanDivision(firstNumeral, secondNumeral).getRomanDivisionResult();
+        String moduloResult = romanCalculator.romanDivision(firstNumeral, secondNumeral).getModuloResult();
+        String divisionResult = romanCalculator.romanDivision(firstNumeral, secondNumeral).getDivisionResult();
 
         assertEquals("I", moduloResult);
         assertEquals("I", divisionResult);
@@ -91,8 +89,8 @@ public class RomanCalculatorTest {
         String firstNumeral = "IIII";
         String secondNumeral = "II";
 
-        String moduloResult = romanCalculator.romanDivision(firstNumeral, secondNumeral).getRomanModuloResult();
-        String divisionResult = romanCalculator.romanDivision(firstNumeral, secondNumeral).getRomanDivisionResult();
+        String moduloResult = romanCalculator.romanDivision(firstNumeral, secondNumeral).getModuloResult();
+        String divisionResult = romanCalculator.romanDivision(firstNumeral, secondNumeral).getDivisionResult();
 
         assertEquals(null, moduloResult);
         assertEquals("II", divisionResult);
@@ -103,8 +101,8 @@ public class RomanCalculatorTest {
         String firstNumeral = "II";
         String secondNumeral = "IIII";
 
-        String moduloResult = romanCalculator.romanDivision(firstNumeral, secondNumeral).getRomanModuloResult();
-        String divisionResult = romanCalculator.romanDivision(firstNumeral, secondNumeral).getRomanDivisionResult();
+        String moduloResult = romanCalculator.romanDivision(firstNumeral, secondNumeral).getModuloResult();
+        String divisionResult = romanCalculator.romanDivision(firstNumeral, secondNumeral).getDivisionResult();
 
         assertEquals("II", moduloResult);
         assertEquals(null, divisionResult);

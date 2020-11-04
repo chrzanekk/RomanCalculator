@@ -15,7 +15,7 @@ public class DigitConverter {
 
     public Integer romanToArabic(String romanInput) {
         if (romanInput == null) {
-            throw new NullPointerException("Unable to convert. String cant be null.");
+            throw new IllegalArgumentException("Unable to convert. String cant be null.");
         }
 
         String romanNumeral = romanInput.toUpperCase();

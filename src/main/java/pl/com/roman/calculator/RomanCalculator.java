@@ -32,7 +32,25 @@ public class RomanCalculator {
     RomanDivisionResult romanDivision(String romanDivided, String romanDivider) {
         int divided = digitConverter.romanToArabic(romanDivided);
         int divider = digitConverter.romanToArabic(romanDivider);
-        return new RomanDivisionResult(divided,divider);
+
+        String romanDivisionResult = "";
+        String romanModuloResult = "";
+        if (divider != 0) {
+            int divisionResult = Math.floorDiv(divided, divider);
+            int moduloResult = Math.floorMod(divided, divider);
+            if (divisionResult == 0) {
+                romanDivisionResult = null;
+            } else {
+                romanDivisionResult = digitConverter.arabicToRoman(divisionResult);
+            }
+
+            if (moduloResult == 0) {
+                romanModuloResult = null;
+            } else {
+                romanModuloResult = digitConverter.arabicToRoman(moduloResult);
+            }
+        }
+        return new RomanDivisionResult(romanDivisionResult, romanModuloResult);
     }
 
     String romanMultiply(String firstNumeral, String secondNumeral) {
